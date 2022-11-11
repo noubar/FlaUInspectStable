@@ -77,6 +77,18 @@ namespace FlaUInspect.ViewModels
             }
         }
 
+        public bool ComExceptionDetected
+        {
+            get
+            {
+                return GetProperty<bool>();
+            }
+            set
+            {
+                SetProperty(value);
+            }
+        }
+
         public bool EnableFocusTrackingMode
         {
             get { return GetProperty<bool>(); }
