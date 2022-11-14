@@ -7,6 +7,7 @@ using FlaUI.Core;
 using FlaUInspect.Core;
 using FlaUInspect.ViewModels;
 using TextCopy;
+using System.Threading.Tasks;
 
 namespace FlaUInspect.Views
 {
