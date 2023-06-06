@@ -92,7 +92,7 @@ namespace FlaUInspect.ViewModels
 
         public ExtendedObservableCollection<DetailGroupViewModel> ItemDetails { get; set; }
 
-        public string XPath => Debug.GetXPathToElement(AutomationElement);
+        public string XPath => XPathFormatter.GetXPathToElement(AutomationElement);
 
         public void LoadChildren(bool loadInnerChildren)
         {

@@ -1,8 +1,11 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using FlaUI.Core;
+using System.Windows.Input;
+using FlaUInspect.Core;
 using FlaUInspect.ViewModels;
+using TextCopy;
 
 namespace FlaUInspect.Views
 {
@@ -12,6 +15,8 @@ namespace FlaUInspect.Views
     public partial class MainWindow
     {
         private readonly MainViewModel _vm;
+     
+
 
         public MainWindow()
         {
@@ -21,8 +26,12 @@ namespace FlaUInspect.Views
             Width = 700;
             Loaded += MainWindow_Loaded;
             _vm = new MainViewModel();
-            DataContext = _vm;
+            ClipboardService.SetText(string.Empty);
+            DataContext = _vm;           
+
         }
+
+
 
         private void AppendVersionToTitle()
         {
@@ -30,9 +39,11 @@ namespace FlaUInspect.Views
             if (attr != null)
             {
                 Title += " v" + attr.InformationalVersion;
+
             }
         }
 
+        
         private void MainWindow_Loaded(object sender, System.EventArgs e)
         {
             if (!_vm.IsInitialized)
@@ -67,5 +78,16 @@ namespace FlaUInspect.Views
                 e.Handled = true;
             }
         }
+
+        private void CopyXpathButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (!XpathTxtBox.Text.Equals("None"))
+            {
+
+                System.Windows.Clipboard.SetText(XpathTxtBox.Text);
+               
+            }
+        }
+
     }
 }

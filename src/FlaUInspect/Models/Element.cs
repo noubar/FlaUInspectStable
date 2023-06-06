@@ -12,7 +12,10 @@ namespace FlaUInspect.Models
 
         public string Name { get; set; }
         public string AutomationId { get; set; }
+        public string ClassName { get; set; }
         public ControlType ControlType { get; set; }
         public List<Element> Children { get; set; }
+        
+
     }
 }

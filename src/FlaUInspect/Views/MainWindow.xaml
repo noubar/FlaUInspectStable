@@ -25,6 +25,7 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="_New Instance" Command="{Binding StartNewInstanceCommand}" />
                     <MenuItem Header="_Capture selected item" Command="{Binding CaptureSelectedItemCommand}" />
+                    <!--<MenuItem Header="_Copy xpath" Command="{Binding CopyXpathCommand}"  />-->
                     <MenuItem Header="_Refresh" Command="{Binding RefreshCommand}" InputGestureText="F5" />
                     <Separator />
                     <MenuItem Header="E_xit" Click="MenuItem_Click" />
@@ -36,13 +37,27 @@
                 </MenuItem>
             </Menu>
             <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem>
-                    <Label Content="{Binding SelectedAutomationType, FallbackValue=None}" />
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="15*" />
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <StatusBarItem  Grid.Column="0">
+                    <Label Content="{Binding SelectedAutomationType, FallbackValue=None}" HorizontalAlignment="Left"/>
                 </StatusBarItem>
-                <StatusBarItem>
+                <StatusBarItem  Grid.Column="1">
                     <StackPanel Orientation="Horizontal" Visibility="{Binding EnableXPath, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <Label>XPath:</Label>
-                        <TextBox VerticalAlignment="Center">
+                        <TextBox x:Name="XpathTxtBox" VerticalAlignment="Center">
                             <TextBox.Style>
                                 <Style BasedOn="{StaticResource SelectableLabel}" TargetType="{x:Type TextBox}">
                                     <Style.Triggers>
@@ -53,6 +68,18 @@
                                 </Style>
                             </TextBox.Style>
                         </TextBox>
+                    </StackPanel>
+                </StatusBarItem>
+                <StatusBarItem  Grid.Column="2">
+                    <StackPanel>
+                        <Popup x:Name="popup" Width="80" Height="15" IsOpen="{Binding ElementName=CopyXpathButton, Path=IsChecked}" StaysOpen="False">
+                            <Border  Background="LightGreen" >
+                                <TextBlock  HorizontalAlignment="Center"  VerticalAlignment="Center" Text="xpath copied"></TextBlock>
+                            </Border>
+                        </Popup>
+                        <ToggleButton Name="CopyXpathButton" Click="CopyXpathButton_Clicked" >
+                            <Image Source="/Resources/Copy.png"/>
+                        </ToggleButton>
                     </StackPanel>
                 </StatusBarItem>
             </StatusBar>

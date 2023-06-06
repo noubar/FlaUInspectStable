@@ -75,7 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\AutomationElementExtensions.cs" />
     <Compile Include="Core\AutomationPropertyExtensions.cs" />
+    <Compile Include="Core\XPathFormatter.cs" />
     <Compile Include="Core\ElementHighlighter.cs" />
     <Compile Include="Core\ExtendedObservableCollection.cs" />
     <Compile Include="Core\FocusTrackingMode.cs" />
@@ -124,6 +126,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -176,6 +179,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Inspect.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="TextCopy">
+      <Version>6.2.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Copy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

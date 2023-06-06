@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using FlaUI.Core;
 using FlaUI.Core.AutomationElements;
 using FlaUI.UIA2;
 using FlaUI.UIA3;
 using FlaUInspect.Core;
+using FlaUInspect.Models;
 using Microsoft.Win32;
+using TextCopy;
 
 namespace FlaUInspect.ViewModels
 {
@@ -29,6 +34,7 @@ namespace FlaUInspect.ViewModels
             StartNewInstanceCommand = new RelayCommand(o =>
             {
                 var info = new ProcessStartInfo(Assembly.GetExecutingAssembly().Location);
+               
                 Process.Start(info);
             });
             CaptureSelectedItemCommand = new RelayCommand(o =>
@@ -89,7 +95,7 @@ namespace FlaUInspect.ViewModels
             get { return GetProperty<bool>(); }
             set { SetProperty(value); }
         }
-
+        
         public AutomationType SelectedAutomationType
         {
             get { return GetProperty<AutomationType>(); }
@@ -136,11 +142,15 @@ namespace FlaUInspect.ViewModels
 
             // Initialize hover
             _hoverMode = new HoverMode(_automation);
+            this.EnableHoverMode = true;
+            this.EnableXPath = true;
             _hoverMode.ElementHovered += ElementToSelectChanged;
 
             // Initialize focus tracking
             _focusTrackingMode = new FocusTrackingMode(_automation);
             _focusTrackingMode.ElementFocused += ElementToSelectChanged;
+            
+
         }
 
         private void ElementToSelectChanged(AutomationElement obj)
@@ -197,6 +207,7 @@ namespace FlaUInspect.ViewModels
             }
             // Select the last element
             elementVm.IsSelected = true;
+           
         }
 
         private ElementViewModel FindElement(ElementViewModel parent, AutomationElement element)
@@ -214,6 +225,7 @@ namespace FlaUInspect.ViewModels
         {
             Elements.Clear();
             Initialize(SelectedAutomationType);
-        }
+        }      
+
     }
 }
