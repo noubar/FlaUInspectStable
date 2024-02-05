@@ -90,7 +90,7 @@
                             </Border>
                         </Popup>
                         <ToggleButton Name="CopyXpathButton" Click="CopyXpathButton_Clicked" Height="20" Width="20" >
-                            <Image Source="/Views/Copy.png"/>
+                            <Image Source="Copy.png"/>
                         </ToggleButton>
                     </StackPanel>
                 </StatusBarItem>
