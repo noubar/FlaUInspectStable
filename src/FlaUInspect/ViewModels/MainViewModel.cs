@@ -153,7 +153,7 @@ namespace FlaUInspect.ViewModels
             _treeWalker = _automation.TreeWalkerFactory.GetControlViewWalker();
 
             // Initialize hover
-            _hoverMode = new HoverMode(_automation);
+            _hoverMode = new HoverMode(_automation, this);
             this.EnableHoverMode = true;
             this.EnableXPath = true;
             _hoverMode.ElementHovered += ElementToSelectChanged;
