@@ -78,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\AutomationElementExtensions.cs" />
     <Compile Include="Core\AutomationPropertyExtensions.cs" />
+    <Compile Include="Core\XPathTreeFormatter.cs" />
     <Compile Include="Core\XPathFormatter.cs" />
     <Compile Include="Core\ElementHighlighter.cs" />
     <Compile Include="Core\ExtendedObservableCollection.cs" />

@@ -38,6 +38,7 @@
                     <MenuItem Header="_New Instance" Command="{Binding StartNewInstanceCommand}" />
                     <MenuItem Header="_New Instance with version selection" Command="{Binding StartNewInstanceWithVersionSelectionCommand}" />
                     <MenuItem Header="_Capture selected item" Command="{Binding CaptureSelectedItemCommand}" />
+                    <MenuItem Header="_Extract Xpathx of children of selected item" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" />
                     <!--<MenuItem Header="_Copy xpath" Command="{Binding CopyXpathCommand}"  />-->
                     <MenuItem Header="_Refresh" Command="{Binding RefreshCommand}" InputGestureText="F5" />
                     <Separator />

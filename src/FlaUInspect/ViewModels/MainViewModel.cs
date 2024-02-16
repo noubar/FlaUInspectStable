@@ -63,6 +63,17 @@ namespace FlaUInspect.ViewModels
                 }
                 capturedImage.Dispose();
             });
+            ExtractChildrenXpathsSelectedItemCommand = new RelayCommand(o =>
+            {
+                if (SelectedItemInTree == null)
+                {
+                    return;
+                }
+                var extractXpathTree = XPathChildrenFormatter.GetXPathOfAllChildren(SelectedItemInTree.AutomationElement);
+                System.Diagnostics.Debug.WriteLine(extractXpathTree);
+                System.Windows.MessageBox.Show(extractXpathTree, "(OK to copy)", MessageBoxButton.OKCancel);
+                System.Windows.Clipboard.SetText(extractXpathTree); 
+            });
             RefreshCommand = new RelayCommand(o =>
             {
                 RefreshTree();
@@ -169,6 +180,7 @@ namespace FlaUInspect.ViewModels
         public ICommand StartNewInstanceWithVersionSelectionCommand { get; private set; }
 
         public ICommand CaptureSelectedItemCommand { get; private set; }
+        public ICommand ExtractChildrenXpathsSelectedItemCommand { get; private set; }
 
         public ICommand RefreshCommand { get; private set; }
 
