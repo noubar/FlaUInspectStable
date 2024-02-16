@@ -42,7 +42,7 @@ namespace FlaUInspect.Core
 
         private void DispatcherTimerTick(object sender, EventArgs e)
         {
-            if (System.Windows.Input.Keyboard.Modifiers.HasFlag(System.Windows.Input.ModifierKeys.Control))
+            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightCtrl))
             {
                 var screenPos = Mouse.Position;
                 try

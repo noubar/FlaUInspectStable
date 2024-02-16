@@ -45,8 +45,8 @@
                     <MenuItem Header="E_xit" Click="MenuItem_Click" />
                 </MenuItem>
                 <MenuItem Header="_Mode">
-                    <MenuItem Header="H_over Mode (use Ctrl + LWin)" IsCheckable="True" IsChecked="{Binding EnableHoverMode}" />
-                    <MenuItem Header="_Focus Tracking" IsCheckable="True" IsChecked="{Binding EnableFocusTrackingMode}" />
+                    <MenuItem Header="H_over Mode (use RightCtrl)" IsCheckable="True" IsChecked="{Binding EnableHoverMode}" />
+                    <MenuItem Header="_Focus Tracking (use RightALT)" IsCheckable="True" IsChecked="{Binding EnableFocusTrackingMode}" />
                     <MenuItem Header="Show _XPath" IsCheckable="True" IsChecked="{Binding EnableXPath}" />
                 </MenuItem>
             </Menu>
@@ -92,7 +92,7 @@
                             </Border>
                         </Popup>
                         <ToggleButton Name="CopyXpathButton" Click="CopyXpathButton_Clicked" Height="20" Width="20" >
-                            <Image Source="Copy.png"/>
+                            <Image x:Name="copyicon" Source="/Resources/Copy.png"/>
                         </ToggleButton>
                     </StackPanel>
                 </StatusBarItem>

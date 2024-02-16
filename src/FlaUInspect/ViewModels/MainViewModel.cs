@@ -17,7 +17,7 @@ using FlaUI.UIA3;
 using FlaUInspect.Core;
 using FlaUInspect.Models;
 using Microsoft.Win32;
-using TextCopy;
+
 
 namespace FlaUInspect.ViewModels
 {
@@ -71,7 +71,7 @@ namespace FlaUInspect.ViewModels
                 }
                 var extractXpathTree = XPathChildrenFormatter.GetXPathOfAllChildren(SelectedItemInTree.AutomationElement);
                 System.Diagnostics.Debug.WriteLine(extractXpathTree);
-                System.Windows.MessageBox.Show(extractXpathTree, "(OK to copy)", MessageBoxButton.OKCancel);
+                MessageBox.Show(extractXpathTree, "(OK to copy)", MessageBoxButton.OK);
                 System.Windows.Clipboard.SetText(extractXpathTree); 
             });
             RefreshCommand = new RelayCommand(o =>
@@ -210,11 +210,8 @@ namespace FlaUInspect.ViewModels
 
             // Initialize hover
             _hoverMode = new HoverMode(_automation, this);
-            this.EnableHoverMode = true;
-            this.EnableXPath = true;
             _hoverMode.ElementHovered += ElementToSelectChanged;
             _hoverMode.Start();
-            EnableHoverMode = true;
 
             // Initialize focus tracking
             _focusTrackingMode = new FocusTrackingMode(_automation);

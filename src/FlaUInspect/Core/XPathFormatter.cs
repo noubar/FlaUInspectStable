@@ -6,6 +6,7 @@ using System.Text;
 using FlaUI.Core.AutomationElements;
 using FlaUI.Core.Definitions;
 using FlaUI.Core.Identifiers;
+using FlaUI.Core.Exceptions;
 
 namespace FlaUInspect.Core
 {
@@ -23,9 +24,19 @@ namespace FlaUInspect.Core
             {
                 return string.Empty;
             }
+            AutomationElement[] array = parent.FindAllChildren();
+            string text = string.Empty;
 
-            AutomationElement[] array = parent.FindAllChildren((ConditionFactory cf) => cf.ByControlType(element.Properties.ControlType));
-            string text = $"{element.Properties.ControlType.Value}";
+            try
+            {
+                 text = $"{element.Properties.ControlType.Value}";
+            }
+            catch (PropertyNotSupportedException)
+            {
+
+                return "Try Again";
+            }
+            
 
             var property = element.Format();
 

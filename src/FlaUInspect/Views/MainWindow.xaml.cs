@@ -7,7 +7,6 @@ using FlaUI.Core;
 using FlaUInspect.Core;
 ﻿using System.Configuration;
 using FlaUInspect.ViewModels;
-using TextCopy;
 using System.Threading.Tasks;
 
 namespace FlaUInspect.Views
@@ -29,8 +28,7 @@ namespace FlaUInspect.Views
             Width = 700;
             Loaded += MainWindow_Loaded;
             _vm = new MainViewModel();
-            ClipboardService.SetText(string.Empty);
-            DataContext = _vm;           
+            DataContext = _vm;
 
         }
 
