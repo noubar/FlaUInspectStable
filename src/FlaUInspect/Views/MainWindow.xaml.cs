@@ -50,20 +50,14 @@ namespace FlaUInspect.Views
         {
             if (!_vm.IsInitialized)
             {
-                _vm.Initialize(ChoseVersion);
+                var dlg = new ChooseVersionWindow { Owner = this };
+                if (dlg.ShowDialog() != true)
+                {
+                    Close();
+                }
+                _vm.Initialize(dlg.SelectedAutomationType);
                 Loaded -= MainWindow_Loaded;
             }
-        }
-
-        private AutomationType ChoseVersion()
-        {
-            var dlg = new ChooseVersionWindow { Owner = this };
-            if (dlg.ShowDialog() != true)
-            {
-                Close();
-            }
-
-            return dlg.SelectedAutomationType;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

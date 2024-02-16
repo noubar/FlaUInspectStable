@@ -84,7 +84,6 @@
     <Compile Include="Core\HoverMode.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="Settings\FlaUInspect.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="ViewModels\DetailGroupViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
@@ -137,9 +136,6 @@
   <ItemGroup>
     <Resource Include="Views\Copy.png" />
     <None Include="App.config" />
-    <Content Include="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Button.png" />
@@ -157,12 +153,7 @@
     <Resource Include="Resources\Window.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Calendar.png" />
-    <Resource Include="Resources\Custom.png" />
     <Resource Include="Resources\DataGrid.png" />
-    <Resource Include="Resources\Document.png" />
-    <Resource Include="Resources\Header.png" />
-    <Resource Include="Resources\HeaderItem.png" />
     <Resource Include="Resources\HyperLink.png" />
     <Resource Include="Resources\Item.png" />
     <Resource Include="Resources\List.png" />
@@ -177,6 +168,16 @@
     <Resource Include="Resources\TitleBar.png" />
     <Resource Include="Resources\ToolBar.png" />
     <Resource Include="Resources\ToolTip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Header.png" />
+    <Resource Include="Resources\HeaderItem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Custom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Document.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Inspect.ico" />
