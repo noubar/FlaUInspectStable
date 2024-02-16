@@ -10,14 +10,19 @@ namespace FlaUInspect.Core
     {
         public static void HighlightElement(AutomationElement automationElement)
         {
-            try
-            {
-                Task.Run(() => automationElement.DrawHighlight(false, Color.Red, TimeSpan.FromSeconds(1)));
-            }
-            catch (PropertyNotSupportedException ex)
-            {
-                Console.WriteLine($"Exception: {ex.Message}");
-            }
+            
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        automationElement.DrawHighlight(false, Color.Red, TimeSpan.FromSeconds(1));
+                }
+                    catch (PropertyNotSupportedException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Caught '{ex.GetType()}': {ex.Message}");
+                    }
+                });
+            
         }
     }
 }
