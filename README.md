@@ -25,12 +25,28 @@ On startup, you can choose if you want to use UIA2 or UIA3 (see [FAQ](https://gi
 ![Choose Version](https://raw.githubusercontent.com/wiki/FlauTech/FlaUInspect/images/choose_version.png)
 
 ###### Main Screen
-![Main Screen](https://raw.githubusercontent.com/wiki/FlauTech/FlaUInspect/images/main_screen.png)
+![Main Screen](docs/images/main.png)
 
+## Manual
 In the ```Mode``` menu, you can choose a few different options:
 
 | Mode | Description |
 | ---- | ----------- |
 | Hover Mode | Enable this mode to select the item the mouse is over immediately in FlaUInspect when control is pressed |
-| Focus Tracking | Enable this mode that the focused element is always automatically selected in FlaUInspect |
+| Focus Tracking | Enable this mode that the focused element is automatically selected in FlaUInspect |
 | Show XPath | Enable this option to show a simple XPath to the current selected element in the StatusBar of FlaUInspect|
+
+
+In the ```File``` menu, you can choose a few different options:
+
+| Option | Description |
+| ---- | ----------- |
+| New Instance | Opens a new instance of the app with the same configurations and modes of the current app |
+| New Instance with version selcetion | Opens a new instance of the app with new configurations and modes  |
+| Capture selected item | Takes screen shot of seleced item in list of xpath tree |
+| Capture selected item | Takes screen shot of seleced item in list of xpath tree |
+| Extract Xpaths of children of selected item | Lets you copy a full list of xpaths of the children of the selected item |
+| Refresh | Refreshes the list fo xpaths elements and useful in case of freeze or crash |
+
+###### More Features
+For more details click [here](docs/README.md)
