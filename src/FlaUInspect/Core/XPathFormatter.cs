@@ -31,10 +31,10 @@ namespace FlaUInspect.Core
             {
                  text = $"{element.Properties.ControlType.Value}";
             }
-            catch (PropertyNotSupportedException)
+            catch (Exception ex)
             {
 
-                return "Try Again";
+                return "Refresh Me";
             }
             
 

@@ -17,7 +17,7 @@ namespace FlaUInspect.Core
                     {
                         automationElement.DrawHighlight(false, Color.Red, TimeSpan.FromSeconds(1));
                 }
-                    catch (PropertyNotSupportedException ex)
+                    catch (Exception ex)
                     {
                         System.Diagnostics.Debug.WriteLine($"Caught '{ex.GetType()}': {ex.Message}");
                     }

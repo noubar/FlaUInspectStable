@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Windows;
 using FlaUI.Core;
@@ -81,19 +82,67 @@ namespace FlaUInspect.ViewModels
                 }
             }
         }
-
-        public string Name => NormalizeString(AutomationElement.Properties.Name.ValueOrDefault);
-
-        public string AutomationId => NormalizeString(AutomationElement.Properties.AutomationId.ValueOrDefault);
-
-        public ControlType ControlType => AutomationElement.Properties.ControlType.TryGetValue(out ControlType value) ? value : ControlType.Custom;
+        public string Name
+        {
+            get
+            {
+                try
+                {
+                    return NormalizeString(AutomationElement.Properties.Name.ValueOrDefault);
+                }
+                catch (Exception ex)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+        public string AutomationId
+        {
+            get
+            {
+                try
+                {
+                    return NormalizeString(AutomationElement.Properties.AutomationId.ValueOrDefault);
+                }
+                catch (Exception ex)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+        public ControlType ControlType
+        {
+            get
+            {
+                try
+                {
+                    return AutomationElement.Properties.ControlType.TryGetValue(out ControlType value) ? value : ControlType.Custom;
+                }
+                catch (Exception ex)
+                {
+                    return ControlType.Unknown;
+                }
+            }
+        }
 
         public ExtendedObservableCollection<ElementViewModel> Children { get; set; }
 
         public ExtendedObservableCollection<DetailGroupViewModel> ItemDetails { get; set; }
 
-        public string XPath => XPathFormatter.GetXPathToElement(AutomationElement);
-
+        public string XPath
+        {
+            get
+            {
+                try
+                {
+                    return XPathFormatter.GetXPathToElement(AutomationElement);
+                }
+                catch (System.Windows.Automation.ElementNotAvailableException)
+                {
+                    return "Refresh Me";
+                }
+            }
+        }
         public void LoadChildren(bool loadInnerChildren)
         {
             foreach (var child in Children)
