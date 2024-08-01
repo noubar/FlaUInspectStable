@@ -18,6 +18,9 @@
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Key="F5" Command="{Binding RefreshCommand}"/>
+        <KeyBinding Key="F4" Command="{Binding CaptureSelectedItemCommand}"/>
+        <KeyBinding Key="F3" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}"/>
+        <KeyBinding Modifiers="Ctrl+Shift" Key="C" Command="{Binding CopyXpathCommand}"/>
     </Window.InputBindings>
     <Grid>
         <DockPanel>
@@ -37,9 +40,8 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="_New Instance" Command="{Binding StartNewInstanceCommand}" />
                     <MenuItem Header="_New Instance with version selection" Command="{Binding StartNewInstanceWithVersionSelectionCommand}" />
-                    <MenuItem Header="_Capture selected item" Command="{Binding CaptureSelectedItemCommand}" />
-                    <MenuItem Header="_Extract Xpathx of children of selected item" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" />
-                    <!--<MenuItem Header="_Copy xpath" Command="{Binding CopyXpathCommand}"  />-->
+                    <MenuItem Header="_Capture selected item" Command="{Binding CaptureSelectedItemCommand}" InputGestureText="F4"/>
+                    <MenuItem Header="_Extract Xpathx of children of selected item" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" InputGestureText="F3"/>
                     <MenuItem Header="_Refresh" Command="{Binding RefreshCommand}" InputGestureText="F5" />
                     <Separator />
                     <MenuItem Header="E_xit" Click="MenuItem_Click" />
@@ -91,7 +93,7 @@
                                 <TextBlock  HorizontalAlignment="Center"  VerticalAlignment="Center" Text="xpath copied"></TextBlock>
                             </Border>
                         </Popup>
-                        <ToggleButton Name="CopyXpathButton" Click="CopyXpathButton_Clicked" Height="20" Width="20" >
+                        <ToggleButton Name="CopyXpathButton" Command="{Binding CopyXpathCommand}" Height="20" Width="20" ToolTip="Copy Xpath&#10;Ctrl + Shift + c">
                             <Image x:Name="copyicon" Source="/Resources/Copy.png"/>
                         </ToggleButton>
                     </StackPanel>

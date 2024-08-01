@@ -78,6 +78,10 @@ namespace FlaUInspect.ViewModels
             {
                 RefreshTree();
             });
+            CopyXpathCommand = new RelayCommand(o =>
+            {
+                CopyXpath();
+            });
         }
 
         public bool IsInitialized
@@ -183,6 +187,8 @@ namespace FlaUInspect.ViewModels
         public ICommand ExtractChildrenXpathsSelectedItemCommand { get; private set; }
 
         public ICommand RefreshCommand { get; private set; }
+
+        public ICommand CopyXpathCommand { get; private set; }
 
         public ObservableCollection<DetailGroupViewModel> SelectedItemDetails => SelectedItemInTree?.ItemDetails;
 
@@ -301,6 +307,18 @@ namespace FlaUInspect.ViewModels
             Elements.Clear();
             Initialize(SelectedAutomationType);
             ComExceptionDetected = false;
+        }
+
+        private void CopyXpath()
+        {
+            if (SelectedItemInTree is null)
+            {
+                Clipboard.SetText("No Xpath");
+            }
+            else
+            {
+                Clipboard.SetText(SelectedItemInTree.XPath);
+            }
         }
     }
 }

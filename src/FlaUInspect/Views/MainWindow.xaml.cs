@@ -108,15 +108,5 @@ namespace FlaUInspect.Views
             }
         }
 
-        private void CopyXpathButton_Clicked(object sender, RoutedEventArgs e)
-        {
-            if (!XpathTxtBox.Text.Equals("None"))
-            {
-
-                System.Windows.Clipboard.SetText(XpathTxtBox.Text);
-               
-            }
-        }
-
     }
 }
