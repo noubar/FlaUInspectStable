@@ -18,9 +18,9 @@
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Key="F5" Command="{Binding RefreshCommand}"/>
-        <KeyBinding Key="F4" Command="{Binding CaptureSelectedItemCommand}"/>
-        <KeyBinding Key="F3" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}"/>
-        <KeyBinding Modifiers="Ctrl+Shift" Key="C" Command="{Binding CopyXpathCommand}"/>
+        <KeyBinding Gesture="Ctrl+Shift+S" Command="{Binding CaptureSelectedItemCommand}" HotkeyManager.RegisterGlobalHotkey="True"/>
+        <KeyBinding Gesture="Ctrl+Shift+E" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" HotkeyManager.RegisterGlobalHotkey="True"/>
+        <KeyBinding Gesture="Ctrl+Shift+C" Command="{Binding CopyXpathCommand}" HotkeyManager.RegisterGlobalHotkey="True"/>
     </Window.InputBindings>
     <Grid>
         <DockPanel>
@@ -40,15 +40,17 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="_New Instance" Command="{Binding StartNewInstanceCommand}" />
                     <MenuItem Header="_New Instance with version selection" Command="{Binding StartNewInstanceWithVersionSelectionCommand}" />
-                    <MenuItem Header="_Capture selected item" Command="{Binding CaptureSelectedItemCommand}" InputGestureText="F4"/>
-                    <MenuItem Header="_Extract Xpathx of children of selected item" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" InputGestureText="F3"/>
                     <MenuItem Header="_Refresh" Command="{Binding RefreshCommand}" InputGestureText="F5" />
                     <Separator />
                     <MenuItem Header="E_xit" Click="MenuItem_Click" />
                 </MenuItem>
+                <MenuItem  Header="_Tools">
+                    <MenuItem Header="_Capture selected item" Command="{Binding CaptureSelectedItemCommand}" InputGestureText="use Ctrl+Shift+S"/>
+                    <MenuItem Header="_Extract Xpathx of children of selected item" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" InputGestureText="use Ctrl+Shift+E"/>
+                </MenuItem>
                 <MenuItem Header="_Mode">
-                    <MenuItem Header="H_over Mode (use RightCtrl)" IsCheckable="True" IsChecked="{Binding EnableHoverMode}" />
-                    <MenuItem Header="_Focus Tracking (use RightALT)" IsCheckable="True" IsChecked="{Binding EnableFocusTrackingMode}" />
+                    <MenuItem Header="H_over Mode" IsCheckable="True" IsChecked="{Binding EnableHoverMode}" InputGestureText="use RightCtrl"/>
+                    <MenuItem Header="_Focus Tracking" IsCheckable="True" IsChecked="{Binding EnableFocusTrackingMode}" InputGestureText="use RightALT" />
                     <MenuItem Header="Show _XPath" IsCheckable="True" IsChecked="{Binding EnableXPath}" />
                 </MenuItem>
             </Menu>

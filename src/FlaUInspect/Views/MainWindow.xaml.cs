@@ -8,6 +8,7 @@ using FlaUInspect.Core;
 ﻿using System.Configuration;
 using FlaUInspect.ViewModels;
 using System.Threading.Tasks;
+using NHotkey.Wpf;
 
 namespace FlaUInspect.Views
 {
