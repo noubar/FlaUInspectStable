@@ -39,18 +39,19 @@
                 </Menu.Style>
                 <MenuItem Header="_File">
                     <MenuItem Header="_New Instance" Command="{Binding StartNewInstanceCommand}" />
-                    <MenuItem Header="_New Instance with version selection" Command="{Binding StartNewInstanceWithVersionSelectionCommand}" />
+                    <MenuItem Header="New Instance with _version selection" Command="{Binding StartNewInstanceWithVersionSelectionCommand}" />
                     <MenuItem Header="_Refresh" Command="{Binding RefreshCommand}" InputGestureText="F5" />
                     <Separator />
                     <MenuItem Header="E_xit" Click="MenuItem_Click" />
                 </MenuItem>
                 <MenuItem  Header="_Tools">
                     <MenuItem Header="_Capture selected item" Command="{Binding CaptureSelectedItemCommand}" InputGestureText="use Ctrl+Shift+S"/>
-                    <MenuItem Header="_Extract Xpathx of children of selected item" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" InputGestureText="use Ctrl+Shift+E"/>
+                    <MenuItem Header="_Extract Xpaths of children of selected item" Command="{Binding ExtractChildrenXpathsSelectedItemCommand}" InputGestureText="use Ctrl+Shift+E"/>
                 </MenuItem>
                 <MenuItem Header="_Mode">
                     <MenuItem Header="H_over Mode" IsCheckable="True" IsChecked="{Binding EnableHoverMode}" InputGestureText="use RightCtrl"/>
                     <MenuItem Header="_Focus Tracking" IsCheckable="True" IsChecked="{Binding EnableFocusTrackingMode}" InputGestureText="use RightALT" />
+                    <MenuItem Header="_Specific XPath" IsCheckable="True" IsChecked="{Binding SpecificXPath}" Name="SpecificXPathCheck"/>
                     <MenuItem Header="Show _XPath" IsCheckable="True" IsChecked="{Binding EnableXPath}" />
                 </MenuItem>
             </Menu>
@@ -79,9 +80,23 @@
                             <TextBox.Style>
                                 <Style BasedOn="{StaticResource SelectableLabel}" TargetType="{x:Type TextBox}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding EnableXPath}" Value="True">
+                                        <!-- Trigger for when both EnableXPath and SpecificXPath are true -->
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding EnableXPath}" Value="True"/>
+                                                <Condition Binding="{Binding SpecificXPath}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Text" Value="{Binding SelectedItemInTree.XPath, FallbackValue=None, Mode=OneWay}"/>
-                                        </DataTrigger>
+                                        </MultiDataTrigger>
+
+                                        <!-- Trigger for when EnableXPath is true and SpecificXPath is false -->
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding EnableXPath}" Value="True"/>
+                                                <Condition Binding="{Binding SpecificXPath}" Value="False"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Text" Value="{Binding SelectedItemInTree.IndexedXPath, FallbackValue=None, Mode=OneWay}"/>
+                                        </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </TextBox.Style>

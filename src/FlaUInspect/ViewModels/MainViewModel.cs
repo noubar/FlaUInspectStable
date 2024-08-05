@@ -35,7 +35,6 @@ namespace FlaUInspect.ViewModels
             StartNewInstanceCommand = new RelayCommand(o =>
             {
                 var info = new ProcessStartInfo(Assembly.GetExecutingAssembly().Location);
-               
                 Process.Start(info);
             });
             StartNewInstanceWithVersionSelectionCommand = new RelayCommand(o =>
@@ -166,11 +165,29 @@ namespace FlaUInspect.ViewModels
                     config.AppSettings.Settings.Add("EnableXPath", "false");
                 }
                 config.Save(ConfigurationSaveMode.Minimal);
-
                 SetProperty(value);
             }
         }
-        
+        public bool SpecificXPath
+        {
+            get { return GetProperty<bool>(); }
+            set
+            {
+                Configuration config = ConfigurationManager.OpenExeConfiguration(System.Windows.Forms.Application.ExecutablePath);
+                config.AppSettings.Settings.Remove("SpecificXpath");
+                if (value)
+                {
+                    config.AppSettings.Settings.Add("SpecificXpath", "true");
+                }
+                else
+                {
+                    config.AppSettings.Settings.Add("SpecificXpath", "false");
+                }
+                config.Save(ConfigurationSaveMode.Minimal);
+                SetProperty(value);
+            }
+        }
+
         public AutomationType SelectedAutomationType
         {
             get { return GetProperty<AutomationType>(); }
@@ -228,10 +245,12 @@ namespace FlaUInspect.ViewModels
             var enableHoverMode = ConfigurationManager.AppSettings["EnableHoverMode"];
             var enableFocusTrackingMode = ConfigurationManager.AppSettings["EnableFocusTrackingMode"];
             var enableXPath = ConfigurationManager.AppSettings["EnableXPath"];
+            var specificXPath = ConfigurationManager.AppSettings["SpecificXpath"];
 
             EnableHoverMode = enableHoverMode == "true";
             EnableFocusTrackingMode = enableFocusTrackingMode == "true";
             EnableXPath = enableXPath == "true";
+            SpecificXPath = specificXPath == "true";
         }
 
         private void ElementToSelectChanged(AutomationElement obj)
@@ -317,7 +336,10 @@ namespace FlaUInspect.ViewModels
             }
             else
             {
-                Clipboard.SetText(SelectedItemInTree.XPath);
+                if (SpecificXPath)
+                    Clipboard.SetText(SelectedItemInTree.XPath);
+                else
+                    Clipboard.SetText(SelectedItemInTree.IndexedXPath);
             }
         }
     }

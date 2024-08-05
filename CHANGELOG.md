@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.1 (2024-08-05)
+
+### Enhancements
+  * Changed design of menuitems
+  * Added HotKeys to xpath extract and ui element screen capture
+  * Added optional indexed xpath instead of specific xpath
+
 ## 1.4.0 (2024-02-24)
 
 ### Enhancements
@@ -8,6 +15,7 @@
   * Added invoke button.
   * Stablities implemented to prevent crashes
   * Added xpath extract ability.
+  * Added ui element screen capture ability.
 
 ## 1.3.0 (2021-04-08)
 

@@ -128,7 +128,6 @@ namespace FlaUInspect.ViewModels
         public ExtendedObservableCollection<ElementViewModel> Children { get; set; }
 
         public ExtendedObservableCollection<DetailGroupViewModel> ItemDetails { get; set; }
-
         public string XPath
         {
             get
@@ -136,6 +135,20 @@ namespace FlaUInspect.ViewModels
                 try
                 {
                     return XPathFormatter.GetXPathToElement(AutomationElement);
+                }
+                catch (System.Windows.Automation.ElementNotAvailableException)
+                {
+                    return "Refresh Me";
+                }
+            }
+        }
+        public string IndexedXPath
+        {
+            get
+            {
+                try
+                {
+                    return Debug.GetXPathToElement(AutomationElement);
                 }
                 catch (System.Windows.Automation.ElementNotAvailableException)
                 {
