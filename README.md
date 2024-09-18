@@ -34,8 +34,15 @@ In the ```Mode``` menu, you can choose a few different options:
 | ---- | ----------- |
 | Hover Mode | Enable this mode to select the item the mouse is over immediately in FlaUInspect when control is pressed |
 | Focus Tracking | Enable this mode that the focused element is automatically selected in FlaUInspect |
+| Specific XPath | Enables xpath generation with automationids or names |
 | Show XPath | Enable this option to show a simple XPath to the current selected element in the StatusBar of FlaUInspect|
 
+In the ```Tools``` menu, you can choose a few different options:
+
+| Mode | Description |
+| ---- | ----------- |
+| Capture selected item | Takes screen shot of seleced item in list of xpath tree |
+| Extract Xpaths of children of selected item | Lets you copy a full list of xpaths of the children of the selected item |
 
 In the ```File``` menu, you can choose a few different options:
 
@@ -43,9 +50,6 @@ In the ```File``` menu, you can choose a few different options:
 | ---- | ----------- |
 | New Instance | Opens a new instance of the app with the same configurations and modes of the current app |
 | New Instance with version selcetion | Opens a new instance of the app with new configurations and modes  |
-| Capture selected item | Takes screen shot of seleced item in list of xpath tree |
-| Capture selected item | Takes screen shot of seleced item in list of xpath tree |
-| Extract Xpaths of children of selected item | Lets you copy a full list of xpaths of the children of the selected item |
 | Refresh | Refreshes the list fo xpaths elements and useful in case of freeze or crash |
 
 ###### More Features
