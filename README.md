@@ -7,6 +7,13 @@ To install FlaUInspectStable, either build it yourself, or download the exe from
 this version is not available in chocolatey.
 
 ### Description
+What can this version better:
+* crashes less.
+* remembers the last chosen UIA version.
+* delivers better explicit xpaths using their names and automationids instead of index numbers which always changes.
+* delivers a list of XPaths of sub-elements of the selected element as a text to be copied.
+* takes a screenshot of the selected element.
+
 There are various tools around which help inspecting application that should be ui tested or automated. Some of them are:
 * VisualUIAVerify
 * Inspect
@@ -24,6 +31,7 @@ On startup, you can choose if you want to use UIA2 or UIA3 (see [FAQ](https://gi
 ![Main Screen](docs/images/main.png)
 
 ## Manual
+
 In the ```Mode``` menu, you can choose a few different options:
 
 | Mode | Description |
@@ -37,7 +45,7 @@ In the ```Tools``` menu, you can choose a few different options:
 
 | Mode | Description |
 | ---- | ----------- |
-| Capture selected item | Takes screen shot of seleced item in list of xpath tree |
+| Capture selected item | Takes screen shot of selected item in list of xpath tree |
 | Extract Xpaths of children of selected item | Lets you copy a full list of xpaths of the children of the selected item |
 
 In the ```File``` menu, you can choose a few different options:
